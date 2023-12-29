@@ -1,3 +1,33 @@
 body {
-  background-color: rgb(255, 248, 222);
+  background-color: rgb(37, 55, 79);
+}
+
+#game {
+  background-color: rgb(37, 55, 79);
+  padding: 10px;
+  max-width: 800px;
+  max-height: 600px;
+  width: 600px;
+  height: 600px;
+  color: #ffffff;
+  margin: 30px auto 0px;
+}
+
+#text {
+  background-color: aliceblue;
+  color: red;
+  padding: 100px;
+}
+
+#controls {
+}
+
+button {
+  cursor: pointer;
+  color: #0a0a23;
+  background-color: #feac32;
+  background-image: linear-gradient(#fecc4c, #ffac33);
+  border: 3px solid #feac32;
+  margin: 50px;
+  padding: 10px;
 }
