@@ -21,8 +21,4 @@ function update(location) {
   text.innerText = location.text;
 }
 
-function testingJS() {
-  text.innerText = "Holy smokes the JS is connected!";
-}
-
-button1.onclick = testingJS();
+button1.onclick = testingJS;
