@@ -10,6 +10,26 @@ const button1 = document.querySelector("#button1");
 const button2 = document.querySelector("#button2");
 const button3 = document.querySelector("#button3");
 const text = document.querySelector("#text");
+const xpText = document.querySelector("#xpText");
+const healthText = document.querySelector("#healthText");
+const goldText = document.querySelector("#goldText");
+const monsterStats = document.querySelector("#monsterStats");
+const monsterName = document.querySelector("#monsterName");
+const monsterHealthText = document.querySelector("#monsterHealth");
+const weapons = [
+  { name: "club", power: 2 },
+  { name: "spiked club", power: 3 },
+  { name: "double spiked club", power: 5 },
+  { name: "pitchfork", power: 6 },
+  { name: "rusty dagger", power: 7 },
+];
+
+const monsters = [
+  { name: "brown sludge", level: 2, health: 10 },
+  { name: "green sludge", level: 3, health: 12 },
+  { name: "black sludge", level: 4, health: 15 },
+  { name: "pale green slime", level: 5, health: 17 },
+];
 
 function update(location) {
   button1.innerText = location["button text"[0]];
