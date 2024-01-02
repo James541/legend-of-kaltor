@@ -33,10 +33,22 @@ const monsters = [
 
 const locations = [
   {
-    name: "a vendor's clearing",
+    name: "vendor",
     "button text": [],
     "button functions": [],
     text: "Lorem Ipsum",
+  },
+  {
+    name: "forest",
+    "button text": ["Fight Sludge", "Turn Around", "Think"],
+    "button functions": [],
+    text: "A clearing in the forest. You are not alone. A disgusting brown sludge looks at you menacingly.",
+  },
+  {
+    name: "clearing",
+    "button text": [],
+    "button functions": [],
+    text: "",
   },
 ];
 
