@@ -41,23 +41,37 @@ const locations = [
   {
     name: "forest",
     "button text": ["Fight Sludge", "Turn Around", "Think"],
-    "button functions": [],
-    text: "A clearing in the forest. You are not alone. A disgusting brown sludge looks at you menacingly.",
+    "button functions": [fightBrownSludge, goClearing, stopAndThink],
+    text: "You work your way through some trees and brush and reach another clearing in the forest. You are not alone. A disgusting brown sludge looks at you menacingly.",
   },
   {
     name: "clearing",
     "button text": [],
     "button functions": [],
-    text: "",
+    text: "You stand in a clearing in the forest caused in part the tumbling wreackage of a wagon. This is where your adventure began.",
   },
 ];
 
+button1.onclick = goVendor;
+button2.onclick = goClearing;
+button3.onclick = goPub;
+
+button2.innerText = "hello joe";
+
 function update(location) {
-  button1.innerText = location["button text"[0]];
-  button2.innerText = location["button text"[1]];
-  button3.innerText = location["button text"[2]];
-  button1.onclick = location["button functions"[0]];
-  button2.onclick = location["button functions"[1]];
-  button3.onclick = location["button functions"[2]];
+  button1.innerText = location["button text"][0];
+  button2.innerText = location["button text"][1];
+  button3.innerText = location["button text"][2];
+  button1.onclick = location["button functions"][0];
+  button2.onclick = location["button functions"][1];
+  button3.onclick = location["button functions"][2];
   text.innerText = location.text;
 }
+
+function fightBrownSludge() {}
+
+function goClearing() {
+  update(locations[1]);
+}
+
+function stopAndThink() {}
