@@ -34,9 +34,9 @@ const monsters = [
 const locations = [
   {
     name: "vendor",
-    "button text": [],
-    "button functions": [],
-    text: "Lorem Ipsum",
+    "button text": ["Buy Weapon", "Buy Health", "Leave"],
+    "button functions": [buyWeapon, buyHealth, goClearing],
+    text: "A dark figure is here, offering wares.",
   },
   {
     name: "forest",
@@ -46,17 +46,15 @@ const locations = [
   },
   {
     name: "clearing",
-    "button text": [],
-    "button functions": [],
-    text: "You stand in a clearing in the forest caused in part the tumbling wreackage of a wagon. This is where your adventure began.",
+    "button text": ["Talk to stranger", "Into the forest", "Go to pub"],
+    "button functions": [goVendor, goForest, goPub],
+    text: "You stand in a clearing in the forest caused in part by the tumbling wreackage of a wagon. This is where your adventure began.",
   },
 ];
 
 button1.onclick = goVendor;
-button2.onclick = goClearing;
+button2.onclick = goForest;
 button3.onclick = goPub;
-
-button2.innerText = "hello joe";
 
 function update(location) {
   button1.innerText = location["button text"][0];
@@ -70,8 +68,21 @@ function update(location) {
 
 function fightBrownSludge() {}
 
-function goClearing() {
+function goForest() {
   update(locations[1]);
+}
+function goClearing() {
+  update(locations[2]);
 }
 
 function stopAndThink() {}
+
+function goVendor() {
+  update(locations[0]);
+}
+
+function goPub() {}
+
+function buyWeapon() {}
+
+function buyHealth() {}
