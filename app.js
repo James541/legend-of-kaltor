@@ -25,7 +25,7 @@ const weapons = [
 ];
 
 const monsters = [
-  { name: "brown sludge", level: 2, health: 10 },
+  { name: "Brown Sludge", level: 2, health: 10 },
   { name: "green sludge", level: 3, health: 12 },
   { name: "black sludge", level: 4, health: 15 },
   { name: "pale green slime", level: 5, health: 17 },
@@ -50,6 +50,12 @@ const locations = [
     "button functions": [goVendor, goForest, goPub],
     text: "You stand in a clearing in the forest caused in part by the tumbling wreackage of a wagon. This is where your adventure began.",
   },
+  {
+    name: "fight",
+    "button text": ["Attack", "Dodge", "Flee"],
+    "button functions": [attack, dodge, goClearing],
+    text: "You are fighting a monster!",
+  },
 ];
 
 button1.onclick = goVendor;
@@ -66,7 +72,18 @@ function update(location) {
   text.innerText = location.text;
 }
 
-function fightBrownSludge() {}
+function fightBrownSludge() {
+  fighting = 0;
+  goFight();
+}
+
+function goFight() {
+  update(locations[3]);
+  monsterHealth = monsters[fighting].health;
+  monsterStats.style.display = "block";
+  monsterName.innerText = monsters[fighting].name;
+  monsterHealthText.innerText = monsterHealth;
+}
 
 function goForest() {
   update(locations[1]);
@@ -75,7 +92,10 @@ function goClearing() {
   update(locations[2]);
 }
 
-function stopAndThink() {}
+function stopAndThink() {
+  text.innerText =
+    "You pause and consider the implications, but perhaps you should be taking action instead.";
+}
 
 function goVendor() {
   update(locations[0]);
@@ -86,3 +106,7 @@ function goPub() {}
 function buyWeapon() {}
 
 function buyHealth() {}
+
+function attack() {}
+
+function dodge() {}
