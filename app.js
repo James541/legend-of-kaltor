@@ -56,6 +56,12 @@ const locations = [
     "button functions": [attack, dodge, goClearing],
     text: "You are fighting a monster!",
   },
+  {
+    name: "monster killed",
+    "button text": [],
+    "button functions": [],
+    text: " Insert proper text",
+  },
 ];
 
 button1.onclick = goVendor;
@@ -89,6 +95,7 @@ function goForest() {
   update(locations[1]);
 }
 function goClearing() {
+  monsterStats.style.display = "none";
   update(locations[2]);
 }
 
@@ -107,6 +114,28 @@ function buyWeapon() {}
 
 function buyHealth() {}
 
-function attack() {}
+function attack() {
+  text.innerText = `You attack the ${monsters[fighting].name} with your ${weapons[0].name}!\n `;
+  text.innerText += `\nThe ${monsters[fighting].name} attacks!`;
+  health -= monsters[fighting].level;
+  monsterHealth -= weapons[0].power + 1;
+  healthText.innerText = health;
+  monsterHealthText.innerText = monsterHealth;
+  if (health <= 0) {
+    lose();
+  } else if (monsterHealth <= 0) {
+    defeatMonster();
+  }
+}
 
 function dodge() {}
+
+function lose() {}
+
+function defeatMonster() {
+  gold += 5;
+  xp += 5;
+  goldText.innerText = gold;
+  xpText.innerText = xp;
+  update(locations[4]);
+}
