@@ -60,7 +60,6 @@ const locations = [
     name: "monster killed",
     "button text": [],
     "button functions": [],
-    text: " Insert proper text",
   },
 ];
 
@@ -133,9 +132,11 @@ function dodge() {}
 function lose() {}
 
 function defeatMonster() {
-  gold += 5;
-  xp += 5;
+  gold += Math.floor(monsters[fighting].level * Math.random() * 3 + 1);
+  xp += monsters[fighting].level;
   goldText.innerText = gold;
   xpText.innerText = xp;
-  update(locations[4]);
+  text.innerText = `A ${monsters[fighting].name} is dead!!\n \nYou learned from your battle and collect the monsters gold as spoils of war.`;
+  monsterStats.style.display = "none";
+  //update(locations[4]);
 }
