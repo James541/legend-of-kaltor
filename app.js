@@ -25,10 +25,12 @@ const weapons = [
 ];
 
 const monsters = [
-  { name: "Brown Sludge", level: 2, health: 10 },
+  { name: "brown sludge", level: 2, health: 10 },
   { name: "green sludge", level: 3, health: 12 },
   { name: "black sludge", level: 4, health: 15 },
   { name: "pale green slime", level: 5, health: 17 },
+  { name: "pale white slime", level: 6, health: 18 },
+  { name: "pale purple slime", level: 7 health: 20 },
 ];
 
 const locations = [
