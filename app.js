@@ -70,6 +70,12 @@ const locations = [
     "button text": [],
     "button functions": [],
   },
+  {
+    name: "forestTwo",
+    "button text": [],
+    "button functions": [],
+    text: "You work your way through more trees and brush. As you emrge from a thick patch of thorny brambles you nearly step on a green sludge. The green sludge is not happy with you.",
+  },
 ];
 
 button1.onclick = goVendor;
