@@ -22,6 +22,11 @@ const weapons = [
   { name: "double spiked club", power: 5 },
   { name: "pitchfork", power: 6 },
   { name: "rusty dagger", power: 7 },
+  { name: "copper dagger", power: 10 },
+  { name: "sharp copper dagger", power: 12 },
+  { name: "cracked iron dagger", power: 13 },
+  { name: "iron dagger", power: 14 },
+  { name: "sharp iron dagger", power: 15 },
 ];
 
 const monsters = [
@@ -30,9 +35,11 @@ const monsters = [
   { name: "black sludge", level: 4, health: 15 },
   { name: "pale green slime", level: 5, health: 17 },
   { name: "pale white slime", level: 6, health: 18 },
-  { name: "pale purple slime", level: 7 health: 20 },
+  { name: "pale purple slime", level: 7, health: 20 },
+  { name: "brown slime", level: 8, health: 22 },
+  { name: "green slime", level: 9, health: 24 },
+  { name: "orange slime", level: 10, health: 26 },
 ];
-
 const locations = [
   {
     name: "vendor",
@@ -138,7 +145,7 @@ function defeatMonster() {
   xp += monsters[fighting].level;
   goldText.innerText = gold;
   xpText.innerText = xp;
-  text.innerText = `A ${monsters[fighting].name} is dead!!\n \nYou learned from your battle and collect the monsters gold as spoils of war.`;
+  text.innerText = `A ${monsters[fighting].name} is dead!!\n \nYou learn from your battle and collect the monsters gold as spoils of war.`;
   monsterStats.style.display = "none";
-  //update(locations[4]);
+  update(locations[4]);
 }
