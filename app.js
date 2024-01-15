@@ -115,7 +115,7 @@ function goClearing() {
 
 function stopAndThink() {
   text.innerText =
-    "You pause and consider the implications, but perhaps you should be taking action instead.";
+    "You pause and consider the implications, and realize you should be taking action instead.";
 }
 
 function goVendor() {
