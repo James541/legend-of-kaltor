@@ -27,6 +27,7 @@ const weapons = [
   { name: "cracked iron dagger", power: 13 },
   { name: "iron dagger", power: 14 },
   { name: "sharp iron dagger", power: 15 },
+  { name: "nicely balanced mace", power: 25 },
 ];
 
 const monsters = [
@@ -39,6 +40,7 @@ const monsters = [
   { name: "brown slime", level: 8, health: 22 },
   { name: "green slime", level: 9, health: 24 },
   { name: "orange slime", level: 10, health: 26 },
+  { name: "wolverine", level: 20, health: 40 },
 ];
 const locations = [
   {
