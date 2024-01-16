@@ -2,7 +2,7 @@ let xp = 0;
 let health = 100;
 let gold = 50;
 let currentWeapon = 0;
-let fighting;
+let fighting = 1;
 let monsterHealth;
 let inventory = [];
 
@@ -48,35 +48,42 @@ const locations = [
     "button text": ["Buy Weapon", "Buy Health", "Leave"],
     "button functions": [buyWeapon, buyHealth, goClearing],
     text: "A dark figure is here, offering wares.",
+    roomNumber: 0,
   },
   {
     name: "forest",
     "button text": ["Fight Sludge", "Turn Around", "Think"],
     "button functions": [fightBrownSludge, goClearing, stopAndThink],
     text: "You work your way through some trees and brush and reach another clearing in the forest. You are not alone. A disgusting brown sludge looks at you menacingly.",
+    roomNumber: 1,
   },
   {
     name: "clearing",
     "button text": ["Talk to stranger", "Into the forest", "Go to pub"],
     "button functions": [goVendor, goForest, goPub],
     text: "You stand in a clearing in the forest caused in part by the tumbling wreackage of a wagon. This is where your adventure began.",
+    roomNumber: 2,
   },
   {
     name: "fight",
     "button text": ["Attack", "Dodge", "Flee"],
     "button functions": [attack, dodge, goClearing],
     text: "You are fighting a monster!",
+    roomNumber: 3,
   },
   {
     name: "monster killed",
-    "button text": [],
+    "button text": ["Look around", "Move Forward", "Go Back"],
     "button functions": [],
+    text: `A ${monsters[fighting].name} is dead!!\n \nYou learn from your battle and collect the monsters gold as spoils of war.`,
+    roomNumber: 4,
   },
   {
     name: "forestTwo",
     "button text": [],
     "button functions": [],
     text: "You work your way through more trees and brush. As you emrge from a thick patch of thorny brambles you nearly step on a green sludge. The green sludge is not happy with you.",
+    roomNumber: 5,
   },
 ];
 
@@ -153,7 +160,7 @@ function defeatMonster() {
   xp += monsters[fighting].level;
   goldText.innerText = gold;
   xpText.innerText = xp;
-  text.innerText = `A ${monsters[fighting].name} is dead!!\n \nYou learn from your battle and collect the monsters gold as spoils of war.`;
   monsterStats.style.display = "none";
+  fighting = fighting;
   update(locations[4]);
 }
