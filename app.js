@@ -46,13 +46,6 @@ const monsters = [
 ];
 const locations = [
   {
-    name: "pub",
-    "button text": [],
-    "button functions": [],
-    text:"",
-    roomNumber: 42
-  }
-  {
     name: "vendor",
     "button text": ["Buy Weapon", "Buy Health", "Leave"],
     "button functions": [buyWeapon, buyHealth, goClearing],
@@ -83,18 +76,27 @@ const locations = [
   {
     name: "monster killed",
     "button text": ["Look around", "Move Forward", "Go Back"],
-    "button functions": [lookAround, moveForward, goBack],
+    "button functions": [lookAround, goForestTwo, goBack],
 
     roomNumber: 4,
   },
   {
     name: "forestTwo",
-    "button text": [],
-    "button functions": [],
-    text: "You work your way through more trees and brush. As you emrge from a thick patch of thorny brambles you nearly step on a green sludge. The green sludge is not happy with you.",
+    "button text": ["Fight Sludge", "Turn Around", "Think"],
+    "button functions": [fightGreenSludge, goForest, stopAndThink],
+    text: "You work your way through more trees and brush. As you emerge from a thick patch of thorny brambles you nearly step on a green sludge. The green sludge is not happy with you.",
     roomNumber: 5,
   },
+  {
+    name: "pub",
+    "button text": ["Buy Beer", "Buy Whiskey", "Leave"],
+    "button functions": [buyBeer, buyWhiskey, goClearing],
+    text: "You enter a nice warm pub. Plenty of open seats, beer and whiskey at the bar.",
+    roomNumber: 42,
+  },
 ];
+
+console.log(locations.length + "location length");
 
 button1.onclick = goVendor;
 button2.onclick = goForest;
@@ -117,6 +119,11 @@ function fightBrownSludge() {
   fighting = 0;
   goFight();
 }
+function fightGreenSludge() {
+  returnRoom = currentRoom;
+  fighting = 1;
+  goFight();
+}
 
 function goFight() {
   update(locations[3]);
@@ -128,6 +135,9 @@ function goFight() {
 
 function goForest() {
   update(locations[1]);
+}
+function goForestTwo() {
+  update(locations[5]);
 }
 function goClearing() {
   monsterStats.style.display = "none";
@@ -143,7 +153,9 @@ function goVendor() {
   update(locations[0]);
 }
 
-function goPub() {}
+function goPub() {
+  update(locations[6]);
+}
 
 function buyWeapon() {}
 
@@ -182,3 +194,5 @@ function lookAround() {
 }
 function moveForward() {}
 function goBack() {}
+function buyBeer() {}
+function buyWhiskey() {}
