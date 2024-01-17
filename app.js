@@ -2,9 +2,11 @@ let xp = 0;
 let health = 100;
 let gold = 50;
 let currentWeapon = 0;
-let fighting = 1;
+let currentRoom = 0;
+let fighting;
 let monsterHealth;
 let inventory = [];
+let returnRoom;
 
 const button1 = document.querySelector("#button1");
 const button2 = document.querySelector("#button2");
@@ -74,8 +76,8 @@ const locations = [
   {
     name: "monster killed",
     "button text": ["Look around", "Move Forward", "Go Back"],
-    "button functions": [],
-    text: `A ${monsters[fighting].name} is dead!!\n \nYou learn from your battle and collect the monsters gold as spoils of war.`,
+    "button functions": [lookAround, moveForward, goBack],
+
     roomNumber: 4,
   },
   {
@@ -99,9 +101,12 @@ function update(location) {
   button2.onclick = location["button functions"][1];
   button3.onclick = location["button functions"][2];
   text.innerText = location.text;
+  currentRoom = location.roomNumber;
+  console.log(currentRoom);
 }
 
 function fightBrownSludge() {
+  returnRoom = currentRoom;
   fighting = 0;
   goFight();
 }
@@ -160,7 +165,13 @@ function defeatMonster() {
   xp += monsters[fighting].level;
   goldText.innerText = gold;
   xpText.innerText = xp;
+  currentRoom = update(locations[4]);
   monsterStats.style.display = "none";
-  fighting = fighting;
-  update(locations[4]);
+  text.innerText = `A ${monsters[fighting].name} is dead!!\n \nYou learn from your battle and collect the monsters gold as spoils of war.`;
 }
+
+function lookAround() {
+  update(locations[returnRoom]);
+}
+function moveForward() {}
+function goBack() {}
