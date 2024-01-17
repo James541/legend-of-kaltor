@@ -46,6 +46,13 @@ const monsters = [
 ];
 const locations = [
   {
+    name: "pub",
+    "button text": [],
+    "button functions": [],
+    text:"",
+    roomNumber: 42
+  }
+  {
     name: "vendor",
     "button text": ["Buy Weapon", "Buy Health", "Leave"],
     "button functions": [buyWeapon, buyHealth, goClearing],
