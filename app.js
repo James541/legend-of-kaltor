@@ -1,6 +1,6 @@
 let xp = 0;
 let health = 100;
-let gold = 50;
+let gold = 5000;
 let currentWeapon = 0;
 let currentRoom = 0;
 let fighting;
@@ -89,6 +89,13 @@ const locations = [
     roomNumber: 5,
   },
   {
+    name: "forestThree",
+    "button text": ["Fight Sludge", "Turn Around", "Think"],
+    "button functions": [fightBlackSludge, goForest, stopAndThink],
+    text: "You work your way deeper into the forest. You sense something watching you and look down to see a black sludge inching towards you aggressively ",
+    roomNumber: 6,
+  },
+  {
     name: "pub",
     "button text": ["Buy Beer", "Buy Whiskey", "Leave"],
     "button functions": [buyBeer, buyWhiskey, goClearing],
@@ -112,7 +119,6 @@ function update(location) {
   button3.onclick = location["button functions"][2];
   text.innerText = location.text;
   currentRoom = location.roomNumber;
-  console.log(currentRoom);
 }
 
 function fightBrownSludge() {
@@ -123,6 +129,12 @@ function fightBrownSludge() {
 function fightGreenSludge() {
   returnRoom = currentRoom;
   fighting = 1;
+  goFight();
+}
+
+function fightBlackSludge() {
+  returnRoom = currentRoom;
+  fighting = 2;
   goFight();
 }
 
@@ -141,6 +153,8 @@ function goForestTwo() {
   update(locations[5]);
 }
 function goClearing() {
+  button1.style.display = "inline";
+  button2.style.display = "inline";
   drinkCounter = 0;
   monsterStats.style.display = "none";
   update(locations[2]);
@@ -159,15 +173,38 @@ function goPub() {
   update(locations[6]);
 }
 
-function buyWeapon() {}
+function buyWeapon() {
+  console.log(currentWeapon);
+  if (currentWeapon < weapons.length - 1) {
+    if (gold >= 50) {
+      gold -= 50;
+      goldText.innerText = gold;
+      currentWeapon++;
+      text.innerText += `\nYou buy a ${weapons[currentWeapon].name}.`;
+    } else {
+      checkGold(50);
+    }
+  } else {
+    text.innerText += "\nYou already have the best weapon available!";
+  }
+}
 
-function buyHealth() {}
+function buyHealth() {
+  if (gold >= 10) {
+    health += 10;
+    gold -= 10;
+    healthText.innerText = health;
+    goldText.innerText = gold;
+  } else {
+    checkGold(10);
+  }
+}
 
 function attack() {
-  text.innerText = `You attack the ${monsters[fighting].name} with your ${weapons[0].name}!\n `;
+  text.innerText = `You attack the ${monsters[fighting].name} with your ${weapons[currentWeapon].name}!\n `;
   text.innerText += `\nThe ${monsters[fighting].name} attacks!`;
   health -= monsters[fighting].level;
-  monsterHealth -= weapons[0].power + 1;
+  monsterHealth -= weapons[currentWeapon].power + 1 + Math.floor(xp * 0.1);
   healthText.innerText = health;
   monsterHealthText.innerText = monsterHealth;
   if (health <= 0) {
@@ -201,13 +238,37 @@ function buyBeer() {
   goldText.innerText = gold;
   text.innerText += "\n The beer is hoppy and cold.";
   drinkCounter++;
-  if (drinkCounter > 3) {
-    text.innerText += "\n You stumble a bit.";
-  }
+  checkCounter(drinkCounter);
 }
 function buyWhiskey() {
   gold -= 5;
   goldText.innerText = gold;
   text.innerText += "\n The whiskey is strong, yet smooth.";
   drinkCounter++;
+  checkCounter(drinkCounter);
+}
+
+function checkCounter(drinks) {
+  if (drinks === 6) {
+    text.innerText += "\n \n You are moderately belligerent.\n";
+  }
+  if (drinks === 3) {
+    text.innerText += "\n \n You stumble a bit.\n";
+  }
+  if (drinks === 9) {
+    text.innerText +=
+      "\n\n You trip and smash face first into your table\n\n The bartender cuts you off. ";
+    button1.style.display = "none";
+    button2.style.display = "none";
+    health -= 13;
+    healthText.innerText = health;
+  }
+}
+function checkGold(price) {
+  if (gold < price) {
+    text.innerText +=
+      "\n\n You don't have enough money, get out of here you bum!";
+  } else {
+    return true;
+  }
 }
