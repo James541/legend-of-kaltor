@@ -7,6 +7,7 @@ let fighting;
 let monsterHealth;
 let inventory = [];
 let returnRoom;
+let drinkCounter = 0;
 
 const button1 = document.querySelector("#button1");
 const button2 = document.querySelector("#button2");
@@ -91,7 +92,7 @@ const locations = [
     name: "pub",
     "button text": ["Buy Beer", "Buy Whiskey", "Leave"],
     "button functions": [buyBeer, buyWhiskey, goClearing],
-    text: "You enter a nice warm pub. Plenty of open seats, beer and whiskey at the bar.",
+    text: "You enter a nice warm pub. Plenty of open seats, beer and whiskey at the bar.\n",
     roomNumber: 42,
   },
 ];
@@ -140,6 +141,7 @@ function goForestTwo() {
   update(locations[5]);
 }
 function goClearing() {
+  drinkCounter = 0;
   monsterStats.style.display = "none";
   update(locations[2]);
 }
@@ -194,5 +196,18 @@ function lookAround() {
 }
 function moveForward() {}
 function goBack() {}
-function buyBeer() {}
-function buyWhiskey() {}
+function buyBeer() {
+  gold -= 2;
+  goldText.innerText = gold;
+  text.innerText += "\n The beer is hoppy and cold.";
+  drinkCounter++;
+  if (drinkCounter > 3) {
+    text.innerText += "\n You stumble a bit.";
+  }
+}
+function buyWhiskey() {
+  gold -= 5;
+  goldText.innerText = gold;
+  text.innerText += "\n The whiskey is strong, yet smooth.";
+  drinkCounter++;
+}
