@@ -92,9 +92,16 @@ const locations = [
     name: "forestThree",
     "button text": ["Fight Sludge", "Turn Around", "Think"],
     "button functions": [fightBlackSludge, goForest, stopAndThink],
-    text: "You work your way deeper into the forest. You sense something watching you and look down to see a black sludge inching towards you aggressively ",
+    text: "You work your way deeper into the forest. You sense something watching you. You look down to see a black sludge inching towards you aggressively ",
     roomNumber: 6,
   },
+  {
+    name: "forestFour",
+    "button text": ["Fight Slime", "Turn Around", "Think"],
+    "button functions": [fightPaleGreenSlime, goForest, stopAndThink ],
+    text: "You don't know where any significant civilization may be, but it does feel like you are moving further from it. It smells of wet earth and pine. The air has a chill.\n From behind a shrubbery a pale green slime emerges. ",
+    roomNumber: 7
+  }
   {
     name: "pub",
     "button text": ["Buy Beer", "Buy Whiskey", "Leave"],
