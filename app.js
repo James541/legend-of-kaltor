@@ -1,6 +1,6 @@
 let xp = 0;
 let health = 100;
-let gold = 5000;
+let gold = 50;
 let currentWeapon = 0;
 let currentRoom = 0;
 let fighting;
@@ -55,7 +55,7 @@ const locations = [
   },
   {
     name: "vendor",
-    "button text": ["Buy Weapon", "Buy Health", "Leave"],
+    "button text": ["Buy Weapon (50)", "Buy Health (10)", "Leave"],
     "button functions": [buyWeapon, buyHealth, goClearing],
     text: "A dark figure is here, offering wares.",
     roomNumber: 1,
@@ -71,7 +71,7 @@ const locations = [
   {
     name: "fight",
     "button text": ["Attack", "Dodge", "Flee"],
-    "button functions": [attack, dodge, goClearing],
+    "button functions": [attack, dodge, goBack],
     text: "You are fighting a monster!",
     roomNumber: 3,
   },
@@ -157,6 +157,12 @@ function fightBlackSludge() {
 function fightPaleGreenSlime() {
   returnRoom = currentRoom;
   fighting = 3;
+  goFight();
+}
+
+function fightPaleWhiteSlime() {
+  returnRoom = currentRoom;
+  fighting = 4;
   goFight();
 }
 
@@ -257,7 +263,7 @@ function moveForward() {
   update(locations[returnRoom + 1]);
 }
 function goBack() {
-  update(locations[returnRoom - 1]);
+  update(locations[currentRoom - 1]);
 }
 function buyBeer() {
   gold -= 2;
