@@ -47,24 +47,25 @@ const monsters = [
 ];
 const locations = [
   {
-    name: "vendor",
-    "button text": ["Buy Weapon", "Buy Health", "Leave"],
-    "button functions": [buyWeapon, buyHealth, goClearing],
-    text: "A dark figure is here, offering wares.",
-    roomNumber: 0,
-  },
-  {
-    name: "forest",
-    "button text": ["Fight Sludge", "Turn Around", "Think"],
-    "button functions": [fightBrownSludge, goClearing, stopAndThink],
-    text: "You work your way through some trees and brush and reach another clearing in the forest. You are not alone. A disgusting brown sludge looks at you menacingly.",
-    roomNumber: 1,
-  },
-  {
     name: "clearing",
     "button text": ["Talk to stranger", "Into the forest", "Go to pub"],
     "button functions": [goVendor, goForest, goPub],
     text: "You stand in a clearing in the forest caused in part by the tumbling wreackage of a wagon. This is where your adventure began.",
+    roomNumber: 0,
+  },
+  {
+    name: "vendor",
+    "button text": ["Buy Weapon", "Buy Health", "Leave"],
+    "button functions": [buyWeapon, buyHealth, goClearing],
+    text: "A dark figure is here, offering wares.",
+    roomNumber: 1,
+    //locationIndex: 0,
+  },
+  {
+    name: "pub",
+    "button text": ["Buy Beer", "Buy Whiskey", "Leave"],
+    "button functions": [buyBeer, buyWhiskey, goClearing],
+    text: "You enter a nice warm pub. Plenty of open seats, beer and whiskey at the bar.\n",
     roomNumber: 2,
   },
   {
@@ -77,37 +78,45 @@ const locations = [
   {
     name: "monster killed",
     "button text": ["Look around", "Move Forward", "Go Back"],
-    "button functions": [lookAround, goForestTwo, goBack],
+    "button functions": [lookAround, moveForward, goBack],
 
     roomNumber: 4,
   },
   {
-    name: "forestTwo",
-    "button text": ["Fight Sludge", "Turn Around", "Think"],
-    "button functions": [fightGreenSludge, goForest, stopAndThink],
-    text: "You work your way through more trees and brush. As you emerge from a thick patch of thorny brambles you nearly step on a green sludge. The green sludge is not happy with you.",
+    name: "forest",
+    "button text": ["Fight Sludge", "Go Back", "Think"],
+    "button functions": [fightBrownSludge, goBack, stopAndThink],
+    text: "You work your way through some trees and brush and reach another clearing in the forest. You are not alone. A disgusting brown sludge looks at you menacingly.",
     roomNumber: 5,
   },
+
   {
-    name: "forestThree",
-    "button text": ["Fight Sludge", "Turn Around", "Think"],
-    "button functions": [fightBlackSludge, goForest, stopAndThink],
-    text: "You work your way deeper into the forest. You sense something watching you. You look down to see a black sludge inching towards you aggressively ",
+    name: "forestTwo",
+    "button text": ["Fight Sludge", "Go Back", "Think"],
+    "button functions": [fightGreenSludge, goBack, stopAndThink],
+    text: "You work your way through more trees and brush. As you emerge from a thick patch of thorny brambles you nearly step on a green sludge. The green sludge is not happy with you.",
     roomNumber: 6,
   },
   {
-    name: "forestFour",
-    "button text": ["Fight Slime", "Turn Around", "Think"],
-    "button functions": [fightPaleGreenSlime, goForest, stopAndThink ],
-    text: "You don't know where any significant civilization may be, but it does feel like you are moving further from it. It smells of wet earth and pine. The air has a chill.\n From behind a shrubbery a pale green slime emerges. ",
-    roomNumber: 7
-  }
+    name: "forestThree",
+    "button text": ["Fight Sludge", "Go Back", "Think"],
+    "button functions": [fightBlackSludge, goBack, stopAndThink],
+    text: "You work your way deeper into the forest. You sense something watching you. You look down to see a black sludge inching towards you aggressively ",
+    roomNumber: 7,
+  },
   {
-    name: "pub",
-    "button text": ["Buy Beer", "Buy Whiskey", "Leave"],
-    "button functions": [buyBeer, buyWhiskey, goClearing],
-    text: "You enter a nice warm pub. Plenty of open seats, beer and whiskey at the bar.\n",
-    roomNumber: 42,
+    name: "forestFour",
+    "button text": ["Fight Slime", "Go Back", "Think"],
+    "button functions": [fightPaleGreenSlime, goBack, stopAndThink],
+    text: "You don't know where any significant civilization may be, but it does feel like you are moving further from it. It smells of wet earth and pine. The air has a chill.\n From behind a shrubbery a pale green slime emerges. ",
+    roomNumber: 8,
+  },
+  {
+    name: "forestFive",
+    "button text": ["Fight Slime", "Go Back", "Think"],
+    "button functions": [fightPaleWhiteSlime, goBack, stopAndThink],
+    text: "As you wade deeper into the forest, you hear running water in the distance.A bizzare looking pale white slime oozes towards you.",
+    roomNumber: 9,
   },
 ];
 
@@ -145,6 +154,12 @@ function fightBlackSludge() {
   goFight();
 }
 
+function fightPaleGreenSlime() {
+  returnRoom = currentRoom;
+  fighting = 3;
+  goFight();
+}
+
 function goFight() {
   update(locations[3]);
   monsterHealth = monsters[fighting].health;
@@ -154,17 +169,17 @@ function goFight() {
 }
 
 function goForest() {
-  update(locations[1]);
+  update(locations[5]);
 }
 function goForestTwo() {
-  update(locations[5]);
+  update(locations[6]);
 }
 function goClearing() {
   button1.style.display = "inline";
   button2.style.display = "inline";
   drinkCounter = 0;
   monsterStats.style.display = "none";
-  update(locations[2]);
+  update(locations[0]);
 }
 
 function stopAndThink() {
@@ -173,11 +188,11 @@ function stopAndThink() {
 }
 
 function goVendor() {
-  update(locations[0]);
+  update(locations[1]);
 }
 
 function goPub() {
-  update(locations[6]);
+  update(locations[2]);
 }
 
 function buyWeapon() {
@@ -238,8 +253,12 @@ function defeatMonster() {
 function lookAround() {
   update(locations[returnRoom]);
 }
-function moveForward() {}
-function goBack() {}
+function moveForward() {
+  update(locations[returnRoom + 1]);
+}
+function goBack() {
+  update(locations[returnRoom - 1]);
+}
 function buyBeer() {
   gold -= 2;
   goldText.innerText = gold;
