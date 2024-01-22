@@ -232,7 +232,7 @@ function attack() {
   text.innerText = `You attack the ${monsters[fighting].name} with your ${weapons[currentWeapon].name}!\n `;
   text.innerText += `\nThe ${monsters[fighting].name} attacks!`;
   health -= monsters[fighting].level;
-  monsterHealth -= weapons[currentWeapon].power + 1 + Math.floor(xp * 0.1);
+  monsterHealth -= weapons[currentWeapon].power + 1 + Math.floor(xp * 0.3);
   healthText.innerText = health;
   monsterHealthText.innerText = monsterHealth;
   if (health <= 0) {
