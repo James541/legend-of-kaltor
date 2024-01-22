@@ -85,7 +85,7 @@ const locations = [
   {
     name: "forest",
     "button text": ["Fight Sludge", "Go Back", "Think"],
-    "button functions": [fightBrownSludge, goBack, stopAndThink],
+    "button functions": [fightBrownSludge, goClearing, stopAndThink],
     text: "You work your way through some trees and brush and reach another clearing in the forest. You are not alone. A disgusting brown sludge looks at you menacingly.",
     roomNumber: 5,
   },
@@ -190,7 +190,7 @@ function goClearing() {
 
 function stopAndThink() {
   text.innerText =
-    "You pause and consider the implications, and realize you should be taking action instead.";
+    "You pause and reflect on your current situation, and realize you should be taking action instead.";
 }
 
 function goVendor() {
@@ -242,12 +242,14 @@ function attack() {
   }
 }
 
-function dodge() {}
+function dodge() {
+  text.innerText = `You dodge a ${monsters[fighting].name}'s attack!`;
+}
 
 function lose() {}
 
 function defeatMonster() {
-  gold += Math.floor(monsters[fighting].level * Math.random() * 3 + 1);
+  gold += Math.floor(monsters[fighting].level * Math.random() * 3 + 5);
   xp += monsters[fighting].level;
   goldText.innerText = gold;
   xpText.innerText = xp;
