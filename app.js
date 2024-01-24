@@ -94,7 +94,7 @@ const locations = [
     name: "forestTwo",
     "button text": ["Fight Sludge", "Go Back", "Think"],
     "button functions": [fightGreenSludge, goBack, stopAndThink],
-    text: "You work your way through more trees and brush. As you emerge from a thick patch of thorny brambles you nearly step on a green sludge. The green sludge is not happy with you.",
+    text: "You work your way through more trees and brush. As you emerge from a thick patch of thorny brambles you nearly step on a green sludge. This upsets the green",
     roomNumber: 6,
   },
   {
@@ -268,18 +268,26 @@ function goBack() {
   update(locations[currentRoom - 1]);
 }
 function buyBeer() {
-  gold -= 2;
-  goldText.innerText = gold;
-  text.innerText += "\n The beer is hoppy and cold.";
-  drinkCounter++;
-  checkCounter(drinkCounter);
+  if (gold > 1) {
+    gold -= 2;
+    goldText.innerText = gold;
+    text.innerText += "\n The beer is hoppy and cold.";
+    drinkCounter++;
+    checkCounter(drinkCounter);
+  } else {
+    checkGold(2);
+  }
 }
 function buyWhiskey() {
-  gold -= 5;
-  goldText.innerText = gold;
-  text.innerText += "\n The whiskey is strong, yet smooth.";
-  drinkCounter++;
-  checkCounter(drinkCounter);
+  if (gold > 4) {
+    gold -= 5;
+    goldText.innerText = gold;
+    text.innerText += "\n The whiskey is strong, yet smooth.";
+    drinkCounter++;
+    checkCounter(drinkCounter);
+  } else {
+    checkGold(5);
+  }
 }
 
 function checkCounter(drinks) {
