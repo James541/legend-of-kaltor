@@ -48,4 +48,5 @@ button {
   color: #ffffff;
   background-color: #c70d0d;
   font-size: larger;
+  text-transform: capitalize;
 }

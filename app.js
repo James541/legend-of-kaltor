@@ -265,7 +265,7 @@ function moveForward() {
   update(locations[returnRoom + 1]);
 }
 function goBack() {
-  update(locations[currentRoom - 1]);
+  update(locations[0]);
 }
 function buyBeer() {
   if (gold > 1) {
