@@ -118,6 +118,13 @@ const locations = [
     text: "As you wade deeper into the forest, you hear running water in the distance.A bizzare looking pale white slime oozes towards you.",
     roomNumber: 9,
   },
+  {
+    name: "forestSix",
+    "button text": ["Fight Slime", "Go Back", "Think"],
+    "button functions": [fightPalePurpleSlime, goBack, stopAndThink],
+    text: "Lorem Ipsum \n\n A strange looking pale purple slime gurgles here.",
+    roomNumber: 10,
+  },
 ];
 
 console.log(locations.length + "location length");
@@ -163,6 +170,12 @@ function fightPaleGreenSlime() {
 function fightPaleWhiteSlime() {
   returnRoom = currentRoom;
   fighting = 4;
+  goFight();
+}
+
+function fightPalePurpleSlime() {
+  returnRoom = currentRoom;
+  fighting = 5;
   goFight();
 }
 
