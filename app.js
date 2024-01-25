@@ -35,15 +35,15 @@ const weapons = [
 
 const monsters = [
   { name: "brown sludge", level: 2, health: 10 },
-  { name: "green sludge", level: 3, health: 12 },
-  { name: "black sludge", level: 4, health: 15 },
-  { name: "pale green slime", level: 5, health: 17 },
-  { name: "pale white slime", level: 6, health: 18 },
-  { name: "pale purple slime", level: 7, health: 20 },
-  { name: "brown slime", level: 8, health: 22 },
-  { name: "green slime", level: 9, health: 24 },
-  { name: "orange slime", level: 10, health: 26 },
-  { name: "wolverine", level: 20, health: 40 },
+  { name: "green sludge", level: 3, health: 15 },
+  { name: "black sludge", level: 4, health: 20 },
+  { name: "pale green slime", level: 6, health: 24 },
+  { name: "pale white slime", level: 8, health: 32 },
+  { name: "pale purple slime", level: 10, health: 40 },
+  { name: "brown slime", level: 13, health: 40 },
+  { name: "green slime", level: 16, health: 49 },
+  { name: "orange slime", level: 19, health: 55 },
+  { name: "wolverine", level: 20, health: 60 },
 ];
 const locations = [
   {
@@ -94,7 +94,7 @@ const locations = [
     name: "forestTwo",
     "button text": ["Fight Sludge", "Go Back", "Think"],
     "button functions": [fightGreenSludge, goBack, stopAndThink],
-    text: "You work your way through more trees and brush. As you emerge from a thick patch of thorny brambles you nearly step on a green sludge. This upsets the green",
+    text: "You work your way through more trees and brush. As you emerge from a thick patch of thorny brambles you nearly step on a green sludge. This upsets the green sludge.",
     roomNumber: 6,
   },
   {
@@ -232,7 +232,7 @@ function attack() {
   text.innerText = `You attack the ${monsters[fighting].name} with your ${weapons[currentWeapon].name}!\n `;
   text.innerText += `\nThe ${monsters[fighting].name} attacks!`;
   health -= monsters[fighting].level;
-  monsterHealth -= weapons[currentWeapon].power + 1 + Math.floor(xp * 0.3);
+  monsterHealth -= weapons[currentWeapon].power + 1 + Math.floor(xp * 0.15);
   healthText.innerText = health;
   monsterHealthText.innerText = monsterHealth;
   if (health <= 0) {
