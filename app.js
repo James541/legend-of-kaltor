@@ -37,7 +37,6 @@ const monsters = [
   { name: "brown sludge", level: 2, health: 10 },
   { name: "green sludge", level: 3, health: 15 },
   { name: "black sludge", level: 4, health: 20 },
-  { name: "pale green slime", level: 6, health: 24 },
   { name: "pale white slime", level: 8, health: 32 },
   { name: "pale purple slime", level: 10, health: 40 },
   { name: "brown slime", level: 13, health: 40 },
@@ -59,7 +58,6 @@ const locations = [
     "button functions": [buyWeapon, buyHealth, goClearing],
     text: "A dark figure is here, offering wares.",
     roomNumber: 1,
-    //locationIndex: 0,
   },
   {
     name: "pub",
@@ -125,6 +123,13 @@ const locations = [
     text: "Lorem Ipsum \n\n A strange looking pale purple slime gurgles here.",
     roomNumber: 10,
   },
+  {
+    name: "forestSeven",
+    "button text": ["Fight Slime", "Go Back", "Think"],
+    "button functions": [fightBrownSlime, goBack, stopAndThink],
+    text: "Lorem Ipsum \n\n A strange looking brown slime snarls at your arrival.",
+    roomNumber: 11,
+  },
 ];
 
 console.log(locations.length + "location length");
@@ -176,6 +181,12 @@ function fightPaleWhiteSlime() {
 function fightPalePurpleSlime() {
   returnRoom = currentRoom;
   fighting = 5;
+  goFight();
+}
+
+function fightBrownSlime() {
+  returnRoom = currentRoom;
+  fighting = 6;
   goFight();
 }
 

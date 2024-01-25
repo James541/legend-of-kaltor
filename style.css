@@ -6,9 +6,9 @@ body {
   background-color: rgb(37, 55, 79);
   padding: 10px;
   max-width: 900px;
-  max-height: 600px;
+  max-height: 1600px;
   width: 700px;
-  height: 600px;
+  height: 1600px;
   color: #ffffff;
   margin: 30px auto 0px;
 }
@@ -43,7 +43,7 @@ button {
 
 #monsterStats {
   display: none;
-  border: 1px solid #0a0a23;
+  border: 3px solid #0a0a23;
   padding: 5px;
   color: #ffffff;
   background-color: #c70d0d;
