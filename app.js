@@ -33,7 +33,11 @@ const weapons = [
   { name: "nicely balanced mace", power: 25 },
 ];
 
-const items = [];
+const items = [
+  { name: "a strange silver coin" },
+  { name: "a small ruby" },
+  { name: "light armor" },
+];
 
 const monsters = [
   { name: "brown sludge", level: 2, health: 10 },
