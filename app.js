@@ -136,9 +136,23 @@ const locations = [
     text: "Lorem Ipsum \n\n A strange looking brown slime snarls at your arrival.",
     roomNumber: 11,
   },
+  {
+    name: "forestEight",
+    "button text": ["Fight Slime", "Go Back", "Think"],
+    "button functions": [fightGreenSlime, goBack, stopAndThink],
+    text: "Lorem Ipsum \n\n A strange looking green slime snaps at you.",
+    roomNumber: 12,
+  },
+  {
+    name: "forestNine",
+    "button text": ["Fight Slime", "Go Back", "Think"],
+    "button functions": [fightOrangeSlime, goBack, stopAndThink],
+    text: "Lorem Ipsum \n\n A strange looking green slime snaps at you.",
+    roomNumber: 13,
+  },
 ];
 
-console.log(locations.length + "location length");
+console.log(locations.length + " = location length");
 
 button1.onclick = goVendor;
 button2.onclick = goForest;
@@ -193,6 +207,18 @@ function fightPalePurpleSlime() {
 function fightBrownSlime() {
   returnRoom = currentRoom;
   fighting = 6;
+  goFight();
+}
+
+function fightGreenSlime() {
+  returnRoom = currentRoom;
+  fighting = 7;
+  goFight();
+}
+
+function fightOrangeSlime() {
+  returnRoom = currentRoom;
+  fighting = 8;
   goFight();
 }
 
