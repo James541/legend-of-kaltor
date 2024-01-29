@@ -49,6 +49,7 @@ const monsters = [
   { name: "green slime", level: 16, health: 49 },
   { name: "orange slime", level: 19, health: 55 },
   { name: "wolverine", level: 20, health: 60 },
+  { name: "python", level: 25, health: 100 },
 ];
 const locations = [
   {
@@ -147,7 +148,14 @@ const locations = [
     name: "forestNine",
     "button text": ["Fight Slime", "Go Back", "Think"],
     "button functions": [fightOrangeSlime, goBack, stopAndThink],
-    text: "Lorem Ipsum \n\n A strange looking green slime snaps at you.",
+    text: "Lorem Ipsum \n\n A toxic looking orange slime is here.",
+    roomNumber: 13,
+  },
+  {
+    name: "embankment",
+    "button text": ["Fight Slime", "Go Back", "Think"],
+    "button functions": [fightOrangeSlime, goBack, stopAndThink],
+    text: "Lorem Ipsum \n\n A toxic looking orange slime is here.",
     roomNumber: 13,
   },
 ];
