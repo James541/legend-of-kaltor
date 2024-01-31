@@ -37,6 +37,8 @@ const items = [
   { name: "a strange silver coin" },
   { name: "a small ruby" },
   { name: "light armor" },
+  { name: "a hunk of crusty bread" },
+  { name: "a chunk of salty cheese" },
 ];
 
 const monsters = [
@@ -153,10 +155,17 @@ const locations = [
   },
   {
     name: "embankment",
-    "button text": ["Fight Slime", "Go Back", "Think"],
-    "button functions": [fightOrangeSlime, goBack, stopAndThink],
+    "button text": ["Fight Wolverine", "Go Back", "Think"],
+    "button functions": [fightWolverine, goBack, stopAndThink],
     text: "Lorem Ipsum \n\n A toxic looking orange slime is here.",
     roomNumber: 13,
+  },
+  {
+    name: "embankmentTwo",
+    "button text": ["Fight Python", "Go Back", "Think"],
+    "button functions": [fightPython, goBack, stopAndThink],
+    text: "Lorem Ipsum \n\n A toxic looking orange slime is here.",
+    roomNumber: 14,
   },
 ];
 
@@ -227,6 +236,18 @@ function fightGreenSlime() {
 function fightOrangeSlime() {
   returnRoom = currentRoom;
   fighting = 8;
+  goFight();
+}
+
+function fightWolverine() {
+  returnRoom = currentRoom;
+  fighting = 9;
+  goFight();
+}
+
+function fightPython() {
+  returnRoom = currentRoom;
+  fighting = 10;
   goFight();
 }
 
